@@ -1,0 +1,168 @@
+<form class="form compact" [formGroup]="employeeForm" (ngSubmit)="save()" novalidate>
+    <div class="form-group">
+        <label class="center-block">
+            Id:<input class="form-control" formControlName="id"></label>
+        <div *ngIf="employeeForm.controls.id.invalid  && (employeeForm.controls.id.dirty || employeeForm.controls.id.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.id.errors.required" >
+                Employee id is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Last name:<input class="form-control" formControlName="lastName"></label>
+        <div *ngIf="employeeForm.controls.lastName.invalid  && (employeeForm.controls.lastName.dirty || employeeForm.controls.lastName.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.lastName.errors.required" >
+                Employee last name is required.
+            </div>
+        </div>
+
+
+        <label class="center-block">
+            First name:<input class="form-control" formControlName="firstName"></label>
+        <div *ngIf="employeeForm.controls.firstName.invalid  && (employeeForm.controls.firstName.dirty || employeeForm.controls.firstName.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.firstName.errors.required" >
+                Employee first name is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Email:<input class="form-control" formControlName="email"></label>
+        <div *ngIf="employeeForm.controls.email.invalid  && (employeeForm.controls.email.dirty || employeeForm.controls.email.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.email.errors.required" >
+                Employee last name is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Avatar:<input class="form-control" formControlName="avatar"></label>
+        <div *ngIf="employeeForm.controls.avatar.invalid  && (employeeForm.controls.avatar.dirty || employeeForm.controls.avatar.touched)"
+             class="alert alert-danger">
+        </div>
+
+
+        <label class="center-block">
+            Job Title:<input class="form-control" formControlName="jobTitle"></label>
+        <div *ngIf="employeeForm.controls.jobTitle.invalid  && (employeeForm.controls.jobTitle.dirty || employeeForm.controls.jobTitle.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.jobTitle.errors.required" >
+                Job title is required.
+            </div>
+        </div>
+
+
+        <label class="center-block">
+            Department:<input class="form-control" formControlName="department"></label>
+        <div *ngIf="employeeForm.controls.department.invalid  && (employeeForm.controls.department.dirty || employeeForm.controls.department.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.department.errors.required" >
+                Department name is required.
+            </div>
+        </div>
+
+
+        <label class="center-block">
+            Manager Id:<input class="form-control" formControlName="managerId"></label>
+        <div *ngIf="employeeForm.controls.managerId.invalid  && (employeeForm.controls.managerId.dirty || employeeForm.controls.managerId.touched)"
+             class="alert alert-danger">
+        </div>
+
+
+        <label class="center-block">
+        Phone:<input class="form-control" formControlName="phone"></label>
+        <div *ngIf="employeeForm.controls.phone.invalid  && (employeeForm.controls.phone.dirty || employeeForm.controls.phone.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.phone.errors.required" >
+                Phone is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Address 1:<input class="form-control" formControlName="address1"></label>
+        <div *ngIf="employeeForm.controls.address1.invalid  && (employeeForm.controls.address1.dirty || employeeForm.controls.address1.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.address1.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Address 2:<input class="form-control" formControlName="address2"></label>
+        <div *ngIf="employeeForm.controls.address2.invalid  && (employeeForm.controls.address2.dirty || employeeForm.controls.address2.touched)"
+             class="alert alert-danger">
+
+        </div>
+
+        <label class="center-block">
+            City:<input class="form-control" formControlName="city"></label>
+        <div *ngIf="employeeForm.controls.city.invalid  && (employeeForm.controls.city.dirty || employeeForm.controls.city.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.city.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            State:<input class="form-control" formControlName="state"></label>
+        <div *ngIf="employeeForm.controls.state.invalid  && (employeeForm.controls.state.dirty || employeeForm.controls.state.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.state.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Postal code:<input class="form-control" formControlName="postalCode"></label>
+        <div *ngIf="employeeForm.controls.postalCode.invalid  && (employeeForm.controls.postalCode.dirty || employeeForm.controls.postalCode.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.postalCode.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Country:<input class="form-control" formControlName="country"></label>
+        <div *ngIf="employeeForm.controls.country.invalid  && (employeeForm.controls.country.dirty || employeeForm.controls.country.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="employeeForm.controls.country.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        </div>
+
+
+        <div class="col-md-12 text-right">
+            <button type='button'  class="btn btn-success"
+                    [disabled]="employeeForm.pristine || employeeForm.invalid"
+                    (click)="save()"
+            >
+                Create
+            </button>
+
+
+
+            <button class="btn btn-default"
+                    [routerLink]="['/home/employees']">
+                Cancel
+            </button>
+
+        </div>
+
+
+</form>

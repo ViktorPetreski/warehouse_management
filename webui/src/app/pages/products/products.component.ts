@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
     @ViewChild('productDiscontinuedTpl') productDiscontinuedTpl: TemplateRef<any>;
 
+    @ViewChild('productDeleteTpl') productDeleteTpl: TemplateRef<any>;
     //ngx-Datatable Variables
     columns:any[];
     rows:any[];
@@ -30,7 +31,8 @@ export class ProductsComponent implements OnInit {
             {prop:"targetLevel"  , name: "Target Level" , width:100 },
             {prop:"reorderLevel" , name: "Reorder Level", width:100 },
             {prop:"minimumReorderQuantity", name: "Min Order", width:100 },
-            {prop:"discontinued" , name: "Discontinued" , width:90, cellTemplate: this.productDiscontinuedTpl}
+            {prop:"discontinued" , name: "Discontinued" , width:90, cellTemplate: this.productDiscontinuedTpl},
+            {prop:"",name:"",width:100,cellTemplate:this.productDeleteTpl}
         ];
 
     }
@@ -39,6 +41,12 @@ export class ProductsComponent implements OnInit {
         this.productService.getProducts().subscribe( (policyData) => {
             this.rows = policyData;
         });
+    }
+
+    delete(id:number):void{
+        console.log("ID:   ",id);
+        this.productService.delete(id);
+        this.router.navigate(['/home/products']);
     }
 
 

@@ -13,9 +13,13 @@ import { CustomersComponent    }   from './pages/customers/customers.component';
 import { OrdersComponent       }   from './pages/orders/orders.component';
 import { OrderDetailsComponent }   from './pages/order_details/order_details.component';
 import { EmployeesComponent    }   from './pages/employees/employees.component';
+import {ProductAddComponent} from "./pages/product-add/product-add.component";
 
 import { AuthGuard } from './services/auth_guard.service';
 import { PageNotFoundComponent }  from './pages/404/page-not-found.component';
+import {CustomerAddComponent} from "./pages/customer-add/customer-add.component";
+import {EmployeeAddComponent} from "./pages/employee-add/employee-add.component";
+
 
 export const routes: Routes = [
   //Important: The sequence of path is important as the router go over then in sequential manner
@@ -39,8 +43,11 @@ export const routes: Routes = [
         { path:'orders'    , component: OrdersComponent      , data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
         { path:'orders/:id', component: OrderDetailsComponent, data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
         { path:'products'  , component: ProductsComponent    , data:[{selectedHeaderItemIndex:2, selectedSubNavItemIndex:-1}]  },
+        { path:'products/add' , component:ProductAddComponent , data:[{selectedHeaderItemIndex:2, selectedSubNavItemIndex:-1}] },
         { path:'customers' , component: CustomersComponent   , data:[{selectedHeaderItemIndex:3, selectedSubNavItemIndex:-1}]  },
+        { path:'customers/add' , component: CustomerAddComponent   , data:[{selectedHeaderItemIndex:3, selectedSubNavItemIndex:-1}]  },
         { path:'employees' , component: EmployeesComponent   , data:[{selectedHeaderItemIndex:4, selectedSubNavItemIndex:-1}]  },
+        { path:'employees/add' , component: EmployeeAddComponent   , data:[{selectedHeaderItemIndex:4, selectedSubNavItemIndex:-1}]  },
     ]
   },
   { path: 'login' , component: LoginComponent       , data:[{selectedHeaderItemIndex:-1, selectedSubNavItemIndex:-1}] },

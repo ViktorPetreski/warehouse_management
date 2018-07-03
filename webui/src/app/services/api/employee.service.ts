@@ -3,6 +3,8 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { ApiRequestService } from './api-request.service';
 import { TranslateService } from './translate.service';
 import { HttpParams} from "@angular/common/http";
+import {Customer} from "../../model/customer";
+import {Employee} from "../../model/employee";
 
 @Injectable()
 export class EmployeeService {
@@ -18,6 +20,11 @@ export class EmployeeService {
         params = params.append('page', typeof page === "number"? page.toString():"0");
         params = params.append('size', typeof size === "number"? size.toString():"1000");
         return this.apiRequest.get('api/employees',params);
+    }
+
+    save(employee:Employee):Observable<any>{
+
+        return this.apiRequest.post('api/employees',employee);
     }
 
 }

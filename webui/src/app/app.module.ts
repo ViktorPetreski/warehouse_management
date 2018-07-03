@@ -36,6 +36,7 @@ import { CustomersComponent    } from './pages/customers/customers.component';
 import { OrdersComponent       } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order_details/order_details.component';
 import { EmployeesComponent    } from './pages/employees/employees.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
 
 
 // Services
@@ -49,6 +50,9 @@ import { OrderService     } from './services/api/order.service';
 import { ProductService   } from './services/api/product.service';
 import { CustomerService  } from './services/api/customer.service';
 import { EmployeeService  } from './services/api/employee.service';
+import { CustomerAddComponent } from './pages/customer-add/customer-add.component';
+import { EmployeeAddComponent } from './pages/employee-add/employee-add.component';
+
 
 
 @NgModule({
@@ -90,9 +94,20 @@ import { EmployeeService  } from './services/api/employee.service';
     CustomersComponent,
     OrdersComponent,
     OrderDetailsComponent,
+    ProductAddComponent,
+    CustomerAddComponent,
+    EmployeeAddComponent,
 
     //Directives
-    TrackScrollDirective
+    TrackScrollDirective,
+
+
+
+
+
+
+
+
   ],
 
   providers:[

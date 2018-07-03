@@ -3,6 +3,7 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { TranslateService } from './translate.service';
 import { ApiRequestService } from './api-request.service';
 import { HttpParams} from "@angular/common/http";
+import {Product} from "../../model/product";
 
 @Injectable()
 export class ProductService {
@@ -39,5 +40,13 @@ export class ProductService {
         return this.apiRequest.get('api/product-stats-by-quantity');
     }
 
+    save(product:Product):Observable<any>{
+
+        return this.apiRequest.post('api/products',product);
+    }
+
+    delete(id:number):void{
+         this.apiRequest.delete(`api/products/${id}`);
+    }
 
 }

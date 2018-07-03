@@ -9,7 +9,7 @@ import { AppConfig } from '../../app-config';
 
 @Injectable()
 export class ApiRequestService {
-
+    private baseUrl = 'http://localhost:9119/';
     constructor(
         private appConfig:AppConfig,
         private http: HttpClient,
@@ -43,8 +43,9 @@ export class ApiRequestService {
     }
 
     post(url:string, body:Object):Observable<any>{
+        console.log("POST ADDRESS",this.appConfig.baseApiPath + url);
         let me = this;
-        return this.http.post(this.appConfig.baseApiPath + url, JSON.stringify(body), { headers:this.getHeaders()})
+        return this.http.post(this.appConfig.baseApiPath + url, JSON.stringify(body),{ headers:this.getHeaders()})
             .catch(function(error:any){
                 if (error.status === 401){
                     me.router.navigate(['/logout']);
@@ -65,6 +66,7 @@ export class ApiRequestService {
     }
 
     delete(url:string):Observable<any>{
+        console.log("DELETE URL",this.appConfig.baseApiPath+url);
         let me = this;
         return this.http.delete(this.appConfig.baseApiPath + url, { headers:this.getHeaders()})
             .catch(function(error:any){

@@ -3,6 +3,8 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { TranslateService } from './translate.service';
 import { ApiRequestService } from './api-request.service';
 import { HttpParams} from "@angular/common/http";
+import {Product} from "../../model/product";
+import {Customer} from "../../model/customer";
 @Injectable()
 export class CustomerService {
 
@@ -35,5 +37,10 @@ export class CustomerService {
             });
 
         return customerListSubject;
+    }
+
+    save(customer:Customer):Observable<any>{
+
+        return this.apiRequest.post('api/customers',customer);
     }
 }

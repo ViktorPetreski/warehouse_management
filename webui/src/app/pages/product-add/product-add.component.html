@@ -1,0 +1,142 @@
+<form class="form compact" [formGroup]="productForm"  novalidate>
+    <div class="form-group">
+        <label class="center-block">
+            Id:<input class="form-control" formControlName="id"></label>
+        <div *ngIf="productForm.controls.id.invalid  && (productForm.controls.id.dirty || productForm.controls.id.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.id.errors.required" >
+                Product id is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Code:<input class="form-control" formControlName="code"></label>
+        <div *ngIf="productForm.controls.code.invalid  && (productForm.controls.code.dirty || productForm.controls.code.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.code.errors.required" >
+                Product code is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+             Name:<input class="form-control" formControlName="name"></label>
+        <div *ngIf="productForm.controls.name.invalid && (productForm.controls.name.dirty || productForm.controls.name.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.name.errors.required" >
+                Product name is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Description:<input class="form-control" formControlName="desc"></label>
+        <div *ngIf="productForm.controls.desc.invalid && (productForm.controls.desc.dirty || productForm.controls.desc.touched)"
+             class="alert alert-danger">
+        </div>
+
+        <label class="center-block">
+            Standard Cost:<input class="form-control" formControlName="standard_cost"></label>
+        <div *ngIf="productForm.controls.standard_cost.invalid && (productForm.controls.standard_cost.dirty || productForm.controls.standard_cost.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.standard_cost.errors.required" >
+                Cost is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            List Price:<input class="form-control" formControlName="price"></label>
+        <div *ngIf="productForm.controls.price.invalid && (productForm.controls.price.dirty || productForm.controls.price.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.price.errors.required" >
+                List Price is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Target Level:<input class="form-control" formControlName="target"></label>
+        <div *ngIf="productForm.controls.target.invalid && (productForm.controls.target.dirty || productForm.controls.target.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.target.errors.required" >
+                Target level is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Reorder Level:<input class="form-control" formControlName="reorder"></label>
+        <div *ngIf="productForm.controls.reorder.invalid && (productForm.controls.reorder.dirty || productForm.controls.reorder.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.reorder.errors.required" >
+                Reorder level is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Minimum Reorder Quantity:<input class="form-control" formControlName="minReorder"></label>
+        <div *ngIf="productForm.controls.minReorder.invalid && (productForm.controls.minReorder.dirty || productForm.controls.minReorder.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.minReorder.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Quantity Per Unit:<input class="form-control" formControlName="quantity"></label>
+        <div *ngIf="productForm.controls.quantity.invalid && (productForm.controls.quantity.dirty || productForm.controls.quantity.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.quantity.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+        <label class="center-block">
+            Discontinued:<input class="form-control" formControlName="disc"></label>
+        <div *ngIf="productForm.controls.disc.invalid && (productForm.controls.disc.dirty || productForm.controls.disc.touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="productForm.controls.disc.errors.required" >
+                Field is required.
+            </div>
+        </div>
+
+
+        <label class="center-block">
+            Category:<div class="select"><select class="form-control" formControlName="category">
+            <option value="Phone">Phone</option>
+            <option value="Camera">Camera</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Tablet">Tablet</option>
+
+        </select></div>
+        </label>
+
+    </div>
+
+    <div class="col-md-12 text-right">
+        <button type='button'  class="btn btn-success"
+                [disabled]="productForm.pristine || productForm.invalid"
+                (click)="save()"
+                >
+            Create
+        </button>
+
+
+
+        <button class="btn btn-default"
+                [routerLink]="['/home/products']">
+            Cancel
+        </button>
+
+    </div>
+
+
+
+
+</form>

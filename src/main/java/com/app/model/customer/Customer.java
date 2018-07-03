@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Table(name = "customers")
 public class Customer  {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
     private String lastName;

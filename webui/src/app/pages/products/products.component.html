@@ -1,7 +1,12 @@
+
+
+
 <div class="pad-16">
 
+    <button class="btn btn-outline" [routerLink]="'/home/products/add'">Add Product</button> <br/>
+
     <ngx-datatable
-        style='width:1000px;'
+        style='width:1080px;'
         [rows]="rows"
         [columns]="columns"
         [headerHeight]="45"
@@ -18,4 +23,12 @@
    </div>
 </ng-template>
 
+<ng-template #productDeleteTpl let-row="row" let-value="value">
+    <div>
+        <button class="btn btn-danger btn-sm" type="button" (click)="delete(row.id)" [id]="row.id">
+            <clr-icon shape="trash"></clr-icon>
+
+        </button>
+    </div>
+</ng-template>
 
