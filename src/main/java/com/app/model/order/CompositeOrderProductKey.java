@@ -14,4 +14,7 @@ public class CompositeOrderProductKey implements Serializable {
         this.orderId   =orderId;
         this.productId =productId;
     }
+    public  CompositeOrderProductKey(){
+
+    }
 }

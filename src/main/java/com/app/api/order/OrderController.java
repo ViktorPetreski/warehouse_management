@@ -1,5 +1,6 @@
 package com.app.api.order;
 
+import com.app.model.response.OperationResponse;
 import io.swagger.annotations.*;
 //import springfox.documentation.annotations.*;
 import org.springframework.http.*;
@@ -15,6 +16,9 @@ import java.math.BigDecimal;
 import com.app.api.*;
 import com.app.model.order.*;
 import com.app.repo.*;
+
+import javax.servlet.http.HttpServletRequest;
+
 import static com.app.model.response.OperationResponse.*;
 
 @RestController
@@ -25,6 +29,7 @@ public class OrderController {
   @Autowired private JdbcTemplate jdbcTemplate;
   @Autowired private OrderInfoRepo orderInfoRepo;
   @Autowired private OrderRepo orderRepo;
+  @Autowired private OrderItemRepo orderItemRepo;
 
 
   @ApiOperation(value = "List of orders", response = OrderResponse.class)
@@ -129,5 +134,36 @@ public class OrderController {
     resp.setPageTotal(itemCount, true);
     return resp;
   }
+
+    @ApiOperation(value = "Add list of order items", response = OperationResponse.class)
+    @RequestMapping(value = "/order-items", method = RequestMethod.POST, produces = {"application/json"})
+    public OperationResponse addListOrderItems(@RequestBody List<OrderItem> orderItems, HttpServletRequest req) {
+        OperationResponse resp = new OperationResponse();
+        for (OrderItem o : orderItems) {
+
+            OrderItem addedOrderItem = this.orderItemRepo.save(o);
+            resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
+            resp.setOperationMessage("Order Item Added");
+
+        }
+        return resp;
+    }
+
+    @ApiOperation(value = "Add new order", response = OperationResponse.class)
+    @RequestMapping(value = "/orders", method = RequestMethod.POST, produces = {"application/json"})
+    public OperationResponse addOrder(@RequestBody Order order, HttpServletRequest req) {
+        OperationResponse resp = new OperationResponse();
+        if (this.orderRepo.exists(order.getId()) ){
+            resp.setOperationStatus(ResponseStatusEnum.ERROR);
+            resp.setOperationMessage("Unable to add Order - Order already exist ");
+        }
+        else{
+            Order addedOrder = this.orderRepo.save(order);
+            resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
+            resp.setOperationMessage("Order Added");
+        }
+        return resp;
+
+    }
 
 }
