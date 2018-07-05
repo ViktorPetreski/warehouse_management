@@ -27,4 +27,7 @@ export class EmployeeService {
         return this.apiRequest.post('api/employees',employee);
     }
 
+    delete(id:number):Observable<any>{
+      return  this.apiRequest.delete(`api/Employees/${id}`);
+    }
 }

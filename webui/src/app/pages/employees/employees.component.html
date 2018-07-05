@@ -3,7 +3,7 @@
     <button class="btn btn-outline" [routerLink]="'/home/employees/add'">Add Employee</button>
     <br/>
     <ngx-datatable
-        style='width:900px;'
+        style='width:1050px;'
         [rows]="rows"
         [columns]="columns"
         [headerHeight]="45"
@@ -13,3 +13,10 @@
     >
     </ngx-datatable>
 </div>
+<ng-template #employeeDeleteTpl let-row="row" let-value="value">
+    <div>
+        <button class="btn btn-danger btn-sm" type="button" (click)="delete(row.id)" [id]="row.id">
+            <clr-icon shape="trash"></clr-icon>
+        </button>
+    </div>
+</ng-template>

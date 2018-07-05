@@ -45,8 +45,8 @@ export class ProductService {
         return this.apiRequest.post('api/products',product);
     }
 
-    delete(id:number):void{
-         this.apiRequest.delete(`api/products/${id}`);
+    delete(id:number):Observable<any>{
+       return  this.apiRequest.delete(`api/products/${id}`);
     }
 
 }

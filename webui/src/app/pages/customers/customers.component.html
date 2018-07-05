@@ -3,7 +3,7 @@
     <button class="btn btn-outline" [routerLink]="'/home/customers/add'">Add Customer</button>
     <br/>
     <ngx-datatable
-        style='width:1000px;'
+        style='width:1100px;'
         [rows]="rows"
         [columns]="columns"
         [headerHeight]="45"
@@ -17,3 +17,12 @@
 
     <div *ngIf="isLoading" class="spinner spinner-lg">Loading...</div>
 </div>
+
+<ng-template #customerDeleteTpl let-row="row" let-value="value">
+    <div>
+        <button class="btn btn-danger btn-sm" type="button" (click)="delete(row.id)" [id]="row.id">
+            <clr-icon shape="trash"></clr-icon>
+
+        </button>
+    </div>
+</ng-template>

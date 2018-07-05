@@ -11,6 +11,7 @@ import { CustomerService } from '../../services/api/customer.service';
 export class CustomersComponent implements OnInit {
 
 
+    @ViewChild('customerDeleteTpl') customerDeleteTpl: TemplateRef<any>;
 
     columns:any[];
     rows:any[];
@@ -33,6 +34,7 @@ export class CustomersComponent implements OnInit {
             {prop:"email"    , name: "Email"       , width:200 },
             {prop:"phone"    , name: "Phone"       , width:160 },
             {prop:"address"  , name: "Address"     , width:220 },
+            {prop:"",name:"",width:100,cellTemplate:this.customerDeleteTpl}
         ];
     }
 
@@ -61,5 +63,16 @@ export class CustomersComponent implements OnInit {
             this.getPageData(true);
         }
 	}
+
+    delete(id:number):void{
+        console.log("ID:   ",id);
+        this.customerService.delete(id).subscribe(
+            success => {
+                this.getPageData();
+            }
+        );
+        this.router.navigate(['/home/customers']);
+    }
+
 
 }

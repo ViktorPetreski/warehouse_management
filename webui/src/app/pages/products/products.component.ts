@@ -1,6 +1,7 @@
 import { Component, OnInit,TemplateRef, ViewChild } from '@angular/core';
 import { ProductService } from '../../services/api/product.service';
 import { Router } from '@angular/router';
+import {Observable} from "rxjs/Observable";
 
 @Component({
 	selector: 's-products-pg',
@@ -33,7 +34,7 @@ export class ProductsComponent implements OnInit {
             {prop:"minimumReorderQuantity", name: "Min Order", width:100 },
             {prop:"discontinued" , name: "Discontinued" , width:90, cellTemplate: this.productDiscontinuedTpl},
             {prop:"",name:"",width:100,cellTemplate:this.productDeleteTpl}
-        ];
+    ];
 
     }
 
@@ -45,7 +46,11 @@ export class ProductsComponent implements OnInit {
 
     delete(id:number):void{
         console.log("ID:   ",id);
-        this.productService.delete(id);
+        this.productService.delete(id).subscribe(
+            success => {
+            this.getPolicyData();
+        }
+      );
         this.router.navigate(['/home/products']);
     }
 

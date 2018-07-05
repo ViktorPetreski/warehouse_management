@@ -43,4 +43,8 @@ export class CustomerService {
 
         return this.apiRequest.post('api/customers',customer);
     }
+
+    delete(id:number):Observable<any>{
+      return  this.apiRequest.delete(`api/customers/${id}`);
+    }
 }
