@@ -28,7 +28,7 @@ export class ProductAddComponent implements OnInit {
 
     createForm(){
         this.productForm = this.fb.group({
-            id             :['',Validators.required],
+            id             : ['',Validators.required],
             code           : ['',Validators.required],
             name           : ['',Validators.required],
             desc           : [''],
@@ -66,7 +66,7 @@ export class ProductAddComponent implements OnInit {
     public save():void{
 
         console.log("PRODUCT JSON!!!" ,JSON.stringify(this.prepareSaveProduct()));
-      this.productService.save(this.prepareSaveProduct());
+      this.productService.save(this.prepareSaveProduct()).subscribe();
 
       this.product = new Product();
       this.router.navigate(['/home/products']);

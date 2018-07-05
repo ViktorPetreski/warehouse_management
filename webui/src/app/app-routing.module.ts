@@ -19,6 +19,7 @@ import { AuthGuard } from './services/auth_guard.service';
 import { PageNotFoundComponent }  from './pages/404/page-not-found.component';
 import {CustomerAddComponent} from "./pages/customer-add/customer-add.component";
 import {EmployeeAddComponent} from "./pages/employee-add/employee-add.component";
+import {OrderAddComponent} from "./pages/order-add/order-add.component";
 
 
 export const routes: Routes = [
@@ -42,6 +43,7 @@ export const routes: Routes = [
         },
         { path:'orders'    , component: OrdersComponent      , data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
         { path:'orders/:id', component: OrderDetailsComponent, data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
+        { path:'order/add', component: OrderAddComponent, data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
         { path:'products'  , component: ProductsComponent    , data:[{selectedHeaderItemIndex:2, selectedSubNavItemIndex:-1}]  },
         { path:'products/add' , component:ProductAddComponent , data:[{selectedHeaderItemIndex:2, selectedSubNavItemIndex:-1}] },
         { path:'customers' , component: CustomersComponent   , data:[{selectedHeaderItemIndex:3, selectedSubNavItemIndex:-1}]  },
