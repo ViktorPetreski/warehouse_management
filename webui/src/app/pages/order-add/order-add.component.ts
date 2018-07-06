@@ -25,11 +25,13 @@ export class OrderAddComponent implements OnInit {
     orderItem: OrderItem;
     rows: any[];
     columns: any[];
+
     quantity: number;
     static orderId : number = 1;
 
     @Input() quantityInput: number;
 
+    orderItemForm:FormGroup;
 
     constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
         this.order = new Order();
@@ -38,6 +40,7 @@ export class OrderAddComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.createForm();
         let me = this;
         me.getPolicyData();
 
@@ -47,9 +50,17 @@ export class OrderAddComponent implements OnInit {
             {prop: "standardCost", name: "Standard Cost", width: 100},
             {prop: "listPrice", name: "List Price", width: 100},
             {prop: "category", name: "Category", width: 100},
-            {prop: "quantity", name: "Quantity", width: 100, cellTemplate: this.productQuantity},
-            {prop: "", name: "", width: 100, cellTemplate: this.orderItemAdd}
+           // {prop: "quantity", name: "Quantity", width: 100, cellTemplate: this.productQuantity},
+            {prop: "", name: "Quantity", width: 200, cellTemplate: this.orderItemAdd}
         ];
+    }
+
+    createForm(){
+        this.orderItemForm = this.fb.group(
+            {
+                quantity  :['']
+            }
+        );
     }
 
     getPolicyData() {
@@ -59,6 +70,10 @@ export class OrderAddComponent implements OnInit {
     }
 
     addOrderItem(productId: number, price: string) {
+
+      const  formModel = this.orderItemForm.value;
+        this.orderItem.quantity = formModel.quantity as number;
+
         price = price.substr(1,).replace(',', '');
         let priceNum: number = parseInt(price);
         console.log("Input:", this.quantityInput);
@@ -71,6 +86,7 @@ export class OrderAddComponent implements OnInit {
         //     dateAllocated: Date.now()
         // };
 
+
         this.orderItem.dateAllocated = Date.now();
         this.orderItem.orderItemStatus = "On order";
         this.orderItem.discount = 1;
@@ -82,6 +98,8 @@ export class OrderAddComponent implements OnInit {
         console.log("Item", this.orderItem);
         this.orderItems.push(this.orderItem);
         this.orderItem = new OrderItem();
+
+        console.log("Items",this.orderItems);
     }
 
 
