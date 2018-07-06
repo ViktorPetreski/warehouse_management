@@ -1,0 +1,45 @@
+<div class="pad-16">
+
+    <ngx-datatable
+        style='width:1080px;'
+        [rows]="rows"
+        [columns]="columns"
+        [headerHeight]="45"
+        [rowHeight]="'auto'"
+        [columnMode]="'standard'"
+        [scrollbarV]="false"
+    >
+    </ngx-datatable>
+</div>
+
+<ng-template #orderItemAdd let-row="row" let-value="value">
+    <div>
+        <button type="button" (click)="addOrderItem(row.id, row.listPrice)"
+                [id]="row.id">
+            <clr-icon shape="plus"></clr-icon>
+
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #productQuantity let-col let-row="row" let-value="value">
+    <div>
+        <label for="quantityInput"></label>
+        <input id="quantityInput" [(ngModel)]="orderItem.quantity" type="number" #quantityInput required [min]="1" [max]="row.quantityPerUnit"/>
+    </div>
+</ng-template>
+
+
+<!--<ng-template #productStatus let-row="product">-->
+<!--<div>-->
+<!--<div class="select"><select class="form-control" formControlName="category">-->
+<!--<option value="Phone">On order</option>-->
+<!--<option value="Camera">Allocated</option>-->
+<!--<option value="Laptop">No stock</option>-->
+<!--<option value="Tablet">Tablet</option>-->
+
+<!--</select></div>-->
+
+<!--</div>-->
+<!--</ng-template>-->
+
