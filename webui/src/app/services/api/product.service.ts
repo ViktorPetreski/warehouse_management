@@ -49,4 +49,55 @@ export class ProductService {
        return  this.apiRequest.delete(`api/products/${id}`);
     }
 
+    getCurrentUserWarehouseId():Observable<any>{
+        return this.apiRequest.get('user');
+    }
+
+    getProductsByUserWarehouseId(warehouseId:number,page?:number, size?:number){
+        //Create Request URL params
+        let me = this;
+        let params: HttpParams = new HttpParams();
+        params = params.append('page', typeof page === "number"? page.toString():"0");
+        params = params.append('size', typeof size === "number"? size.toString():"1000");
+
+        let productList = new Subject<any>(); // Will use this subject to emit data that we want
+
+        this.apiRequest.get(`api/products/${warehouseId}`,params)
+            .subscribe(jsonResp => {
+                let returnObj = jsonResp.items.map(function(v, i, a){
+                    let newRow = Object.assign({}, v, {
+                        listPrice   : me.translate.getCurrencyString(v.listPrice),
+                        standardCost: me.translate.getCurrencyString(v.standardCost)
+                    });
+                    return newRow;
+                });
+                productList.next(returnObj); // incidentList is a Subject and emits an event thats being listened to by the components
+            });
+
+        return productList;
+    }
+
+    getProductsByOtherUsers(warehouseId:number,page?:number, size?:number){
+        //Create Request URL params
+        let me = this;
+        let params: HttpParams = new HttpParams();
+        params = params.append('page', typeof page === "number"? page.toString():"0");
+        params = params.append('size', typeof size === "number"? size.toString():"1000");
+
+        let productList = new Subject<any>(); // Will use this subject to emit data that we want
+
+        this.apiRequest.get(`api/product/${warehouseId}`,params)
+            .subscribe(jsonResp => {
+                let returnObj = jsonResp.items.map(function(v, i, a){
+                    let newRow = Object.assign({}, v, {
+                        listPrice   : me.translate.getCurrencyString(v.listPrice),
+                        standardCost: me.translate.getCurrencyString(v.standardCost)
+                    });
+                    return newRow;
+                });
+                productList.next(returnObj); // incidentList is a Subject and emits an event thats being listened to by the components
+            });
+
+        return productList;
+    }
 }

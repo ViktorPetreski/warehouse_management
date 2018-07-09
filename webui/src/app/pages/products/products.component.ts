@@ -11,7 +11,7 @@ import {Observable} from "rxjs/Observable";
 
 export class ProductsComponent implements OnInit {
 
-    @ViewChild('productDiscontinuedTpl') productDiscontinuedTpl: TemplateRef<any>;
+
 
     @ViewChild('productDeleteTpl') productDeleteTpl: TemplateRef<any>;
     //ngx-Datatable Variables
@@ -19,10 +19,15 @@ export class ProductsComponent implements OnInit {
     rows:any[];
 
 
+
+
     constructor( private router: Router, private productService: ProductService) {}
     ngOnInit() {
         var me = this;
-        me.getPolicyData();
+      //  me.getPolicyData();
+
+
+          me.getPolicyData2();
         this.columns=[
             {prop:"productCode"  , name: "Code"         , width:60  },
             {prop:"productName"  , name: "Name"         , width:200 },
@@ -32,17 +37,38 @@ export class ProductsComponent implements OnInit {
             {prop:"targetLevel"  , name: "Target Level" , width:100 },
             {prop:"reorderLevel" , name: "Reorder Level", width:100 },
             {prop:"minimumReorderQuantity", name: "Min Order", width:100 },
-            {prop:"discontinued" , name: "Discontinued" , width:90, cellTemplate: this.productDiscontinuedTpl},
             {prop:"",name:"",width:100,cellTemplate:this.productDeleteTpl}
     ];
 
     }
 
+
     getPolicyData() {
+
+
         this.productService.getProducts().subscribe( (policyData) => {
             this.rows = policyData;
         });
     }
+
+
+
+    getPolicyData2() {
+
+        this.productService.getCurrentUserWarehouseId().subscribe(
+            serverWarehouseId => {
+             //   this.user = serverUser;
+             //   console.log("!!!!!!!",this.user.warehouseId);
+                this.productService.getProductsByUserWarehouseId(serverWarehouseId).subscribe( (policyData) => {
+                    this.rows = policyData;
+                });
+                console.log("WAREHOUSE ID !!!!!",serverWarehouseId);
+            });
+
+
+
+    }
+
 
     delete(id:number):void{
         console.log("ID:   ",id);

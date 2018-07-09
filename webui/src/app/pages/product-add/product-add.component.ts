@@ -16,7 +16,7 @@ import { FormControl ,FormGroup,FormBuilder,Validators}            from '@angula
 export class ProductAddComponent implements OnInit {
 
 
-    private product:Product;
+   private product:Product;
     productForm:FormGroup;
   constructor(private productService:ProductService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder) {
       this.product = new Product();
@@ -57,7 +57,8 @@ export class ProductAddComponent implements OnInit {
          minimumReorderQuantity:formModel.minReorder as number,
          quantityPerUnit:formModel.quantity as string,
          discontinued:formModel.disc as number,
-         category:formModel.category as string
+         category:formModel.category as string,
+         warehouseId:null
      };
      return saveProduct;
 
@@ -65,8 +66,18 @@ export class ProductAddComponent implements OnInit {
 
     public save():void{
 
-        console.log("PRODUCT JSON!!!" ,JSON.stringify(this.prepareSaveProduct()));
-      this.productService.save(this.prepareSaveProduct()).subscribe();
+
+        this.productService.getCurrentUserWarehouseId().subscribe(
+            serverWarehouseId =>{
+
+                this.product = this.prepareSaveProduct();
+                this.product.warehouseId = serverWarehouseId as number;
+                this.productService.save(this.product).subscribe();
+                console.log("PRODUCT JSON !!!!" , JSON.stringify(this.product));
+            }
+
+        );
+    //  this.productService.save(this.prepareSaveProduct()).subscribe();
 
       this.product = new Product();
       this.router.navigate(['/home/products']);

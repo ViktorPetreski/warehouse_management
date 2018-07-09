@@ -20,6 +20,7 @@ import { PageNotFoundComponent }  from './pages/404/page-not-found.component';
 import {CustomerAddComponent} from "./pages/customer-add/customer-add.component";
 import {EmployeeAddComponent} from "./pages/employee-add/employee-add.component";
 import {OrderAddComponent} from "./pages/order-add/order-add.component";
+import {OtherProductsComponent} from "./pages/other-products/other-products.component";
 
 
 export const routes: Routes = [
@@ -50,6 +51,7 @@ export const routes: Routes = [
         { path:'customers/add' , component: CustomerAddComponent   , data:[{selectedHeaderItemIndex:3, selectedSubNavItemIndex:-1}]  },
         { path:'employees' , component: EmployeesComponent   , data:[{selectedHeaderItemIndex:4, selectedSubNavItemIndex:-1}]  },
         { path:'employees/add' , component: EmployeeAddComponent   , data:[{selectedHeaderItemIndex:4, selectedSubNavItemIndex:-1}]  },
+        { path:'other-products' , component: OtherProductsComponent   , data:[{selectedHeaderItemIndex:5, selectedSubNavItemIndex:-1}]  }
     ]
   },
   { path: 'login' , component: LoginComponent       , data:[{selectedHeaderItemIndex:-1, selectedSubNavItemIndex:-1}] },

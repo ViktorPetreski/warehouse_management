@@ -23,5 +23,6 @@ public class Product  {
     private String  quantityPerUnit;
     private Integer discontinued;
     @ApiModelProperty(allowableValues = "Camera, Laptop, Tablet, Phone") private String category;
+    private Integer warehouseId;
     public Product(){}
 }

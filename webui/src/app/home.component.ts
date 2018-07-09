@@ -34,7 +34,8 @@ export class HomeComponent   {
         { label: 'Orders'   , href: '/home/orders'    , subNav: []},
         { label: 'Products' , href: '/home/products'  , subNav: []},
         { label: 'Customers', href: '/home/customers' , subNav: []},
-        { label: 'Employees', href: '/home/employees' , subNav: []}
+        { label: 'Employees', href: '/home/employees' , subNav: []},
+        { label: 'Other Products', href: '/home/other-products' , subNav: []},
     ];
 
     public selectedHeaderItemIndex:number=0;
