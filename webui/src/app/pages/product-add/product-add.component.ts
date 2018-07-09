@@ -43,6 +43,7 @@ export class ProductAddComponent implements OnInit {
 
         })
     }
+
     prepareSaveProduct():Product{
      const formModel = this.productForm.value;
      const saveProduct:Product = {
@@ -65,7 +66,7 @@ export class ProductAddComponent implements OnInit {
 
     public save():void{
 
-        console.log("PRODUCT JSON!!!" ,JSON.stringify(this.prepareSaveProduct()));
+      console.log("PRODUCT JSON!!!" ,JSON.stringify(this.prepareSaveProduct()));
       this.productService.save(this.prepareSaveProduct()).subscribe();
 
       this.product = new Product();

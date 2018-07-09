@@ -1,7 +1,94 @@
 <div class="pad-16">
 
+    <h3>
+        Ordered items
+    </h3>
     <ngx-datatable
-        style='width:1080px;'
+        style='width:600px;'
+        [rows]="orderItems"
+        [columns]="orderItemsColumns"
+        [headerHeight]="45"
+        [rowHeight]="'auto'"
+        [columnMode]="'standard'"
+        [scrollbarV]="false"
+    >
+    </ngx-datatable>
+
+    <h3></h3>
+
+    <h3>
+        Shipping details
+    </h3>
+
+    <form class="form compact" [formGroup]="orderForm" novalidate>
+        <div class="form-group">
+            <label class="center-block">
+                Customer ID:<input class="form-control" formControlName="customerId"></label>
+            <div *ngIf="orderForm.controls.customerId.invalid  && orderForm.controls.customerId.dirty"
+                 class="alert alert-danger">
+                <div *ngIf="orderForm.controls.customerId.errors.required" >
+                    Customer id is required
+                </div>
+            </div>
+
+            <label class="center-block">
+                Ship address:<input class="form-control" formControlName="shipAddress"></label>
+            <div *ngIf="orderForm.controls.shipAddress.invalid  && orderForm.controls.shipAddress.dirty"
+                 class="alert alert-danger">
+                <div *ngIf="orderForm.controls.shipAddress.errors.required" >
+                    Ship address is required
+                </div>
+            </div>
+
+            <label class="center-block">
+                Ship city:<input class="form-control" formControlName="shipCity"></label>
+            <div *ngIf="orderForm.controls.shipCity.invalid  && orderForm.controls.shipCity.dirty"
+                 class="alert alert-danger">
+                <div *ngIf="orderForm.controls.shipCity.errors.required" >
+                    Ship city is required
+                </div>
+            </div>
+
+            <label class="center-block">
+                Ship postal code:<input class="form-control" formControlName="shipPostalCode"></label>
+            <div *ngIf="orderForm.controls.shipPostalCode.invalid  && orderForm.controls.shipPostalCode.dirty"
+                 class="alert alert-danger">
+                <div *ngIf="orderForm.controls.shipPostalCode.errors.required" >
+                    Ship postal code is required
+                </div>
+            </div>
+
+            <label class="center-block">
+                Shipping fee:<input class="form-control" formControlName="shippingFee"></label>
+            <div *ngIf="orderForm.controls.shippingFee.invalid  && orderForm.controls.shippingFee.dirty"
+                 class="alert alert-danger">
+                <div *ngIf="orderForm.controls.shippingFee.errors.required" >
+                    Shipping fee is required
+                </div>
+            </div>
+
+            <label class="center-block">
+                Payment type:<div class="select"><select class="form-control" formControlName="paymentType">
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+                <option value="Check">Check</option>
+            </select></div>
+            </label>
+
+        </div>
+
+        <button class="btn btn-success-outline"
+                type="button"
+                [disabled]="orderForm.pristine || orderForm.invalid"
+                (click)="submitOrder()">Submit</button> <br/>
+    </form>
+
+<h3>
+    Available products
+</h3>
+
+    <ngx-datatable
+        style='width:750px;'
         [rows]="rows"
         [columns]="columns"
         [headerHeight]="45"
@@ -14,18 +101,18 @@
 
 <ng-template #orderItemAdd let-row="row" let-value="value">
     <form  [formGroup]="orderItemForm">
-    <div>
+        <div>
 
-        <label for="quantityInput"></label>
-        <input class="form-control" formControlName="quantity" id="quantityInput" type="number" #quantityInput required [min]="1" [max]="row.quantityPerUnit"/>
+            <label for="quantityInput"></label>
+            <input class="form-control" formControlName="quantity" id="quantityInput" type="number" #quantityInput required [min]="1" [max]="row.quantityPerUnit"/>
 
-        <button type="submit" (click)="addOrderItem(row.id, row.listPrice)"
-                [id]="row.id">
-            <clr-icon shape="plus"></clr-icon>
+            <button type="button" (click)="addOrderItem(row.id, row.listPrice)"
+                    [id]="row.id">
+                <clr-icon shape="plus"></clr-icon>
 
-        </button>
+            </button>
 
-    </div>
+        </div>
     </form>
 </ng-template>
 
