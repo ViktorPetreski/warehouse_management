@@ -38,25 +38,27 @@ public class User {
     @JsonIgnore @Getter @Setter private boolean enableBetaTesting;
     @JsonIgnore @Getter @Setter private boolean enableRenewal;
 
+    @Getter @Setter private Integer warehouseId;
+
     public User(){
-        this("new", "PASSWORD", Role.USER, "new", "new", true, "", "", "", "", "", "", "", "", true, false);
+        this("new", "PASSWORD", Role.USER, "new", "new", true, "", "", "", "", "", "", "", "", true, false,1);
     }
 
     public User(String userId, String password, String firstName, String lastName){
-        this(userId, password, Role.USER, firstName, lastName, true, "", "", "", "", "", "", "", "", true, false);
+        this(userId, password, Role.USER, firstName, lastName, true, "", "", "", "", "", "", "", "", true, false,1);
     }
 
     public User(String userId, String password, Role role, String firstName, String lastName){
-        this(userId, password, role, firstName, lastName, true, "", "", "", "", "", "", "", "", true, false);
+        this(userId, password, role, firstName, lastName, true, "", "", "", "", "", "", "", "", true, false,1);
     }
 
     public User(String userId, String password, Role role, String firstName, String lastName, boolean isActive){
-        this(userId, password, role, firstName, lastName, isActive, "", "", "", "", "", "", "", "", true, false);
+        this(userId, password, role, firstName, lastName, isActive, "", "", "", "", "", "", "", "", true, false,1);
     }
 
     public User(String userId, String password, Role role, String firstName, String lastName, boolean isActive,
          String company, String phone, String address1, String address2, String country, String postal,
-         String secretQuestion, String secretAnswer, boolean enableRenewal, boolean enableBetaTesting){
+         String secretQuestion, String secretAnswer, boolean enableRenewal, boolean enableBetaTesting,Integer warehouseId){
         this.setUserId(userId);
         this.setEmail(userId);
         this.setPassword(new BCryptPasswordEncoder().encode(password));
@@ -74,6 +76,7 @@ public class User {
         this.setSecretAnswer(secretAnswer);
         this.setEnableRenewal(enableRenewal);
         this.setEnableBetaTesting(enableBetaTesting);
+        this.setWarehouseId(warehouseId);
     }
 
     public String getFullName(){

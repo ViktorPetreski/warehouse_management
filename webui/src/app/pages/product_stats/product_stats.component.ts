@@ -13,7 +13,7 @@ export class ProductStatsComponent {
 
 
     public productByQuantityData=[];
-    public barColorScheme = {domain: ['#007cbb']}
+    public barColorScheme = {domain: ['#0095D3']};
 
     constructor(private router: Router, private productService: ProductService ) { }
     ngOnInit() {

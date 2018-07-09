@@ -23,7 +23,7 @@
 
   <div class="chart-box">
     <h4> Orders By Country </h4>
-        <ngx-charts-bar-vertical
+        <ngx-charts-bar-horizontal
             [view]="[990, 270]"
             [barPadding]="1"
             [scheme]="barColorScheme"
@@ -34,8 +34,9 @@
             [yAxis]="true"
             [legend]="false"
             [roundEdges]="false"
+
         >
-        </ngx-charts-bar-vertical>
+        </ngx-charts-bar-horizontal>
   </div>
 
 <!--ngx-datatable

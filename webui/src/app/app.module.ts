@@ -53,6 +53,7 @@ import { EmployeeService  } from './services/api/employee.service';
 import { CustomerAddComponent } from './pages/customer-add/customer-add.component';
 import { EmployeeAddComponent } from './pages/employee-add/employee-add.component';
 import { OrderAddComponent } from './pages/order-add/order-add.component';
+import { OtherProductsComponent } from './pages/other-products/other-products.component';
 
 
 
@@ -103,6 +104,8 @@ import { OrderAddComponent } from './pages/order-add/order-add.component';
     TrackScrollDirective,
 
     OrderAddComponent,
+
+    OtherProductsComponent,
 
 
 

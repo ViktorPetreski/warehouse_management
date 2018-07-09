@@ -17,11 +17,14 @@ export class OrderStatsComponent implements OnInit {
     ordersByPaymentData: any[] = [];
     ordersByCountryData: any[] = [];
     colorScheme = {
-        domain: ['#007cbb', '#61c673', '#ff8e28', '#ef2e2e']
+        domain: ['#1A23A0',
+            '#60B515',
+            '#F52F22',
+            '#FFDC0B']
     };
     barColorScheme = {
-        domain: ['#007cbb']
-    }
+        domain: ['#0095D3']
+    };
 
     constructor(private router: Router, private orderService: OrderService) { }
 

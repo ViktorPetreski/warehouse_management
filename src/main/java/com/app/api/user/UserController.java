@@ -17,14 +17,14 @@ import static com.app.model.response.OperationResponse.*;
 
 @RestController
 @Api(tags = {"Authentication"})
-public class UserController {
+public class    UserController {
 
 	@Autowired
 	private UserService userService;
 
 	@ApiOperation(value = "Gets current user information", response = UserResponse.class)
 	@RequestMapping(value = "/user", method = RequestMethod.GET, produces = {"application/json"})
-	public UserResponse getUserInformation(@RequestParam(value = "name", required = false) String userIdParam, HttpServletRequest req) {
+	public Integer getUserInformation(@RequestParam(value = "name", required = false) String userIdParam, HttpServletRequest req) {
 
 		String loggedInUserId = userService.getLoggedInUserId();
 
@@ -54,7 +54,7 @@ public class UserController {
 			resp.setOperationMessage("No Access");
 		}
 		resp.setData(user);
-		return resp;
+		return user.getWarehouseId();
 	}
 
 

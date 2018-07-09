@@ -38,7 +38,10 @@ export class OrdersComponent implements OnInit {
 
     public getPageData() {
         var me = this;
-        let legendColors = {"On Hold":'#ef2e2e', "Shipped":'#ff8e28', "Complete":'#61c673', "New":'#007cbb'};
+        let legendColors = {"On Hold":'#F52F22',
+            "Shipped":'#FFDC0B',
+            "Complete":'#1A23A0',
+            "New":'#60B515'};
         me.isLoading=true;
         me.orderService.getOrderStats("status")
         .mergeMap(function(statusData){

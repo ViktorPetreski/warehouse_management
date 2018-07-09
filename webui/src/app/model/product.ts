@@ -11,4 +11,5 @@ export class Product {
    quantityPerUnit:string;
    discontinued:number;
    category:string;
+   warehouseId:number;
 }

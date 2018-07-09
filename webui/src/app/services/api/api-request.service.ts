@@ -32,6 +32,7 @@ export class ApiRequestService {
 
     get(url:string, urlParams?:HttpParams):Observable<any>{
         let me = this;
+        console.log("GET ADDRESS",this.appConfig.baseApiPath + url);
         return this.http.get(this.appConfig.baseApiPath + url, {headers:this.getHeaders(),  params:urlParams} )
             .catch(function(error:any){
                 console.log("Some error in catch");
