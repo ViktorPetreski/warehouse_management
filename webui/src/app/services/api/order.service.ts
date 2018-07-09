@@ -3,6 +3,7 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { ApiRequestService } from './api-request.service';
 import { TranslateService } from './translate.service';
 import { HttpParams} from "@angular/common/http";
+import {Order} from "../../model/order";
 
 @Injectable()
 export class OrderService {
@@ -69,4 +70,12 @@ export class OrderService {
     }
 
 
+    getOrderData(){
+
+    }
+
+    save(order:Order):Observable<any>{
+
+        return this.apiRequest.post('api/orders',order);
+    }
 }

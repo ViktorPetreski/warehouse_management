@@ -36,7 +36,7 @@ export class OrdersComponent implements OnInit {
         ];
     }
 
-    getPageData() {
+    public getPageData() {
         var me = this;
         let legendColors = {"On Hold":'#F52F22',
             "Shipped":'#FFDC0B',
