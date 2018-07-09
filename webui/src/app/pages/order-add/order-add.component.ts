@@ -140,7 +140,7 @@ export class OrderAddComponent implements OnInit {
         const formModel = this.orderForm.value;
         const newOrder:Order = {
             id:OrderAddComponent.orderId,
-            employeeId:0, //SMENI
+            employeeId:201, //SMENI
             customerId:formModel.customerId as number,
             orderDate: new Date(Date.now()),
             shippedDate: null,
@@ -165,6 +165,7 @@ export class OrderAddComponent implements OnInit {
         this.orderService.save(this.prepareOrder()).subscribe(
             // Page<OrderInfo> pg = orderInfoRepo.findAll(org.springframework.data.domain.Example.of(qry), pageable);
        );
+        this.orderService.saveItems(this.orderItems).subscribe();
     //
         this.order.id = OrderAddComponent.orderId;
         OrderAddComponent.orderId++;

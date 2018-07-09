@@ -4,6 +4,7 @@ import { ApiRequestService } from './api-request.service';
 import { TranslateService } from './translate.service';
 import { HttpParams} from "@angular/common/http";
 import {Order} from "../../model/order";
+import {OrderItem} from "../../model/order-item";
 
 @Injectable()
 export class OrderService {
@@ -77,5 +78,9 @@ export class OrderService {
     save(order:Order):Observable<any>{
 
         return this.apiRequest.post('api/orders',order);
+    }
+
+    saveItems(orderItems:OrderItem[]){
+        return this.apiRequest.post('api/order-items',orderItems);
     }
 }
