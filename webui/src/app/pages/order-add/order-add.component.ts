@@ -94,7 +94,6 @@ export class OrderAddComponent implements OnInit {
         );
     }
 
-
     getPolicyData() {
         this.productService.getProducts().subscribe((policyData) => {
             this.rows = policyData;
@@ -159,6 +158,7 @@ export class OrderAddComponent implements OnInit {
         };
         return newOrder;
     }
+
     public submitOrder(): void{
 
         console.log("PRODUCT JSON!!!" ,JSON.stringify(this.prepareOrder()));
